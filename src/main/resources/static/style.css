@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: system-ui;
+}
+
+.table {
+    width: 100%;
+}
+table {
+    border-collapse: collapse;
+}
+
+tbody > tr:nth-of-type(even) {
+    background-color: #ffffff;
+}
+
+tbody > tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+}
+
+tr > * {
+    padding: 0 1rem;
+    text-align: start;
+}
+
+td:first-child {
+    width: 50%;
+}
+
+
