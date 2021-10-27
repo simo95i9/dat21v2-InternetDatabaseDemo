@@ -1,26 +1,25 @@
 package gredal.internetdatabasedemo.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Component;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
-import java.util.Properties;
 
+@Component
 public class DatabaseService {
-    private static DatabaseService databaseService;
     private final Sql2o sql2o;
 
-    private DatabaseService() {
-        Properties properties = PropertiesService.getProperties();
+    @Autowired
+    private DatabaseService(Environment environment) {
         this.sql2o = new Sql2o(
-                properties.getProperty("spring.datasource.url"),
-                properties.getProperty("spring.datasource.username"),
-                properties.getProperty("spring.datasource.password")
+                environment.getProperty("spring.datasource.url"),
+                environment.getProperty("spring.datasource.username"),
+                environment.getProperty("spring.datasource.password")
         );
     }
 
-    public static Connection getConnection() {
-        if (databaseService == null) {
-            databaseService = new DatabaseService();
-        }
-        return databaseService.sql2o.open();
+    public Connection getConnection() {
+        return sql2o.open();
     }
 }

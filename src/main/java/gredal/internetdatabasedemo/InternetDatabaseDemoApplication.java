@@ -6,8 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class InternetDatabaseDemoApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(InternetDatabaseDemoApplication.class, args);
-    }
+    public static SpringApplication springApplication;
 
+    public static void main(String[] args) {
+        springApplication = new SpringApplication(InternetDatabaseDemoApplication.class);
+        springApplication.run(args);
+    }
 }

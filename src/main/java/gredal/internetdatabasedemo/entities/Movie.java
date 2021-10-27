@@ -1,4 +1,4 @@
-package gredal.internetdatabasedemo.Entities;
+package gredal.internetdatabasedemo.entities;
 
 public class Movie {
     private Integer id;
