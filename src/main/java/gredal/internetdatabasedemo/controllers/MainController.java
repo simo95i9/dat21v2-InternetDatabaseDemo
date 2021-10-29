@@ -17,7 +17,7 @@ public class MainController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("movies", movieRepository.getAll());
+        model.addAttribute("movies", movieRepository.read());
         return "index";
     }
 
