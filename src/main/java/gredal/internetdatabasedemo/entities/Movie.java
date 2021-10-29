@@ -1,19 +1,23 @@
 package gredal.internetdatabasedemo.entities;
 
+import java.util.regex.*;
+
 public class Movie {
+    private static final Pattern pattern = Pattern.compile("^(.+)(, )(The.*)$");
+
     private Integer id;
-    private String title;
     private String year;
     private String length;
+    private String title;
     private String subject;
     private String popularity;
     private String awards;
 
-    public Movie(Integer id, String title, String year, String length, String subject, String popularity, String awards) {
+    public Movie(Integer id, String year, String length, String title, String subject, String popularity, String awards) {
         this.id = id;
-        this.title = title;
         this.year = year;
         this.length = length;
+        this.title = title;
         this.subject = subject;
         this.popularity = popularity;
         this.awards = awards;
@@ -37,6 +41,10 @@ public class Movie {
     }
 
     public String getTitle() {
+        Matcher matcher = pattern.matcher(this.title);
+        if (matcher.find()) {
+            return matcher.group(3) + " " + matcher.group(1);
+        }
         return title;
     }
 
